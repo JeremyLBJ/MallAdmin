@@ -1,9 +1,7 @@
 package com.lhd.sys.activiti;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.Collection;
@@ -17,7 +15,7 @@ import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
-import org.activiti.engine.repository.ProcessDefinitionQuery;
+import org.activiti.engine.runtime.ProcessInstance;
 import org.junit.Test;
 
 import com.lhd.sys.Config.ActivitiConfig;
@@ -41,13 +39,13 @@ public class Process {
 	 */
 	@Test
 	public void ProcessZip () {
-		InputStream resourceAsStream = configuration.getClass().getResourceAsStream("/activiti3.zip") ;
+		InputStream resourceAsStream = configuration.getClass().getResourceAsStream("/payMent.zip") ;
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
 		ZipInputStream zipInputStream = new ZipInputStream(resourceAsStream) ;
-		repositoryService.createDeployment().name("保修流程003")
+		Deployment deploy = repositoryService.createDeployment().name("淘宝发货流程")
 		                                    .addZipInputStream(zipInputStream)
-		                                    .deploy();
-		System.out.println("部署成功");
+		                                    .deploy() ;
+		System.out.println("部署成功ID为:::"+deploy.getId()) ;
 	}
 	
 	
@@ -99,7 +97,7 @@ public class Process {
 	@Test
 	public void startProcess () {
 		RuntimeService runtimeService = configuration.getRuntimeService() ;
-		String processDefinitionKey = "leavenBill" ;
+		String processDefinitionKey = "payMent" ;
 		runtimeService.startProcessInstanceByKey(processDefinitionKey) ;
 		System.out.println("流程启动成功");
 	}
@@ -196,6 +194,28 @@ public class Process {
 				
 			}
 			
+		}
+	}
+	
+	/**
+	 * 
+	 * 查询运行流程  act_ru_execution 
+	 * 
+	 */
+	@Test
+	public void processExecetion () {
+		RuntimeService runtimeService = this.configuration.getRuntimeService() ;
+		String processInstanceId = "160001" ;
+		 List<ProcessInstance> list = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).list() ;
+		if ( null != list && list.size() > 0 ) {
+			for (ProcessInstance p : list) {
+				System.out.println("活动ID::::"+p.getActivityId()) ;
+				System.out.println("部署ID::::"+p.getDeploymentId()) ;
+				System.out.println("流程ID::::"+p.getId()) ;
+				System.out.println("流程名::::"+p.getProcessDefinitionId()) ;
+				System.out.println(p.getParentId());
+				System.out.println("流程实例ID::::"+p.getProcessInstanceId()) ;
+ 			}
 		}
 	}
 

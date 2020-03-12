@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.lhd.sys.common.ActiverUser;
 import com.lhd.sys.common.ResultObject;
 import com.lhd.sys.common.WebUntils;
+import com.lhd.sys.common.annotation.SysLog;
 import com.lhd.sys.entity.SysLogInfo;
 import com.lhd.sys.service.LoginfoService;
 
@@ -31,9 +32,9 @@ public class SysController {
 	 * 使用Shiro进行登录
 	 */
 	@RequestMapping("/adminLoginByShiro")
+	@SysLog(value="登录日志")
 	@ResponseBody
 	public ResultObject adminLoginByShiro ( String name , String password ) {
-		System.out.println("aaaaaaaaaaaaa"+name);
 		//1.获取Subject
 		Subject subject = SecurityUtils.getSubject() ;
 		
@@ -46,7 +47,6 @@ public class SysController {
 			//登录成功
 			//设置到session中
 			ActiverUser user = (ActiverUser) subject.getPrincipal() ;
-			System.out.println(user.getSysUser().getId()+"::::::user");
 			WebUntils.getSession().setAttribute("user", user.getSysUser());
 			
 			//登录日志记录

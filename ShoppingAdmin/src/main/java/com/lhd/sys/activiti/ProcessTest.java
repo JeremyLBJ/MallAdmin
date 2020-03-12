@@ -36,10 +36,10 @@ public class ProcessTest {
 	 */
 	@Test
 	public void deployProcess () {
-		InputStream inputStream = configuration.getClass().getResourceAsStream("/activiti3.zip") ;
+		InputStream inputStream = configuration.getClass().getResourceAsStream("/activitiBpmn.zip") ;
 		ZipInputStream zipInputStream = new ZipInputStream(inputStream) ;
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
-	    Deployment deploy = repositoryService.createDeployment().name("保修流程001")
+	    Deployment deploy = repositoryService.createDeployment().name("保修流程测试")
 				.addZipInputStream(zipInputStream) 
 				.deploy() ;
 	   
@@ -97,7 +97,7 @@ public class ProcessTest {
 	@Test
 	public void startProcess () {
 		RuntimeService runtimeService = configuration.getRuntimeService() ;
-		String processDefinitionKey = "activiti" ;
+		String processDefinitionKey = "payMent" ;
 		runtimeService.startProcessInstanceByKey(processDefinitionKey) ;
 		System.out.println("流程启动成功");
 	}
@@ -109,7 +109,7 @@ public class ProcessTest {
 	@Test
 	public void deleteProcess () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
-		String deploymentId = "12501" ;
+		String deploymentId = "1" ;
 		//repositoryService.deleteDeployment(deploymentId);
 		repositoryService.deleteDeployment(deploymentId, true);
 		System.out.println("删除成功");
