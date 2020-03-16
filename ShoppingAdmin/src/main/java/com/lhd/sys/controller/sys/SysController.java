@@ -28,6 +28,7 @@ public class SysController {
 	@Autowired
 	private LoginfoService loginfoService ;
 	
+	
 	/**
 	 * 使用Shiro进行登录
 	 */
@@ -55,6 +56,7 @@ public class SysController {
 			info.setLogintime(new Date());
 			info.setLoginip(WebUntils.getRequest().getRemoteAddr());
 			loginfoService.loginMessage(info);
+			
 			
 			System.out.println("登录成功"+user);
 			return  ResultObject.LONG_SUCCESS ;

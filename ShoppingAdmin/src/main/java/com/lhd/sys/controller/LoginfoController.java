@@ -11,6 +11,7 @@ import com.lhd.sys.common.ResultObject;
 import com.lhd.sys.service.LoginfoService;
 import com.lhd.sys.untils.LaYuiPage;
 import com.lhd.sys.vo.LoginfoVO;
+import com.lhd.sys.vo.SysLogVO;
 
 /**
  * 
@@ -32,20 +33,26 @@ public class LoginfoController {
 	@RequestMapping("/loginfosMessage")
 	@ResponseBody
 	public Object loginfosMessage (LoginfoVO loginfoVO  ) {
-		System.out.println("登录名称:"+loginfoVO.getLoginname() +"::::::"+"登录地址:"+loginfoVO.getLoginip() +"idwei :"+loginfoVO.getId());
 		logger.info("layui查询订单开始======== >>>>>>");
 		//LaYuiPage pages = loginfoService.findAllOrderList( loginfoVO.getPage() ,loginfoVO.getLimit() ) ;
 		LaYuiPage pages = loginfoService.findAllLoginfo(loginfoVO) ;
-		System.out.println(pages.toString());
 		logger.info("layui查询订单结束======== >>>>>>");
 		return pages ; 
+	}
+	
+	
+	@RequestMapping("/SysLog")
+	@ResponseBody
+	public Object SysLog ( SysLogVO logVO ) {
+		LaYuiPage page = this.loginfoService.findAllSysLog(logVO) ;
+		return page ;
 	}
 	
 
 	/**
 	 * 删除
 	 */
-	@RequestMapping("/deleteSysLoginfo")
+	/*@RequestMapping("/deleteSysLoginfo")
 	@ResponseBody
 	public ResultObject deleteSysLoginfo ( Integer id ) {
 		try {
@@ -53,6 +60,19 @@ public class LoginfoController {
 			return ResultObject.DELETE_SUCCESS ;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return ResultObject.DELETE_ERROR ;
+		}
+	}*/
+	
+	
+	@RequestMapping("/deleteSysLog")
+	@ResponseBody
+	public ResultObject deleteSysLog ( Integer id ) {
+		try {
+			this.loginfoService.removeSysLog(id);
+			return ResultObject.DELETE_SUCCESS ;
+		} catch (Exception e) {
+			e.printStackTrace() ;
 			return ResultObject.DELETE_ERROR ;
 		}
 	}
@@ -73,7 +93,7 @@ public class LoginfoController {
 		        
 		    }
 		  try {
-			loginfoService.removeSysLoginfos(id);
+			loginfoService.removeSysLogs(id) ;
 			return ResultObject.DELETE_SUCCESS ;
 		} catch (Exception e) {
 			e.printStackTrace();

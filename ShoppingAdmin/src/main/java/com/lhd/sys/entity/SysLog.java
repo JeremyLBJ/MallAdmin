@@ -2,6 +2,8 @@ package com.lhd.sys.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class SysLog {
     /**
      *
@@ -73,6 +75,7 @@ public class SysLog {
      *
      * @mbg.generated Thu Mar 12 16:44:23 CST 2020
      */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date createdate;
 
     /**
@@ -266,4 +269,12 @@ public class SysLog {
     public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
+
+	@Override
+	public String toString() {
+		return "SysLog [id=" + id + ", operation=" + operation + ", method=" + method + ", params=" + params + ", ip="
+				+ ip + ", loginname=" + loginname + ", time=" + time + ", createdate=" + createdate + "]";
+	}
+    
+    
 }

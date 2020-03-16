@@ -32,7 +32,7 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">登录地址</label>
 					<div class="layui-input-inline">
-						<input type="text" name="loginip"  autocomplete="off" class="layui-input">
+						<input type="text" name="ip"  autocomplete="off" class="layui-input">
 					</div>
 			</div>
 			<div class="layui-inline">
@@ -98,7 +98,7 @@
 		
 		var tableIns=table.render({
 			elem:'#loginfoTable'
-				,url:'../../../loginfo/loginfosMessage'
+				,url:'../../../loginfo/SysLog'
 				,toolbar:'#loginfoToolBar'
 				,title:'用户登录日志'
 				,height:'full-220'
@@ -107,9 +107,12 @@
 					[
 						  {type: "checkbox", fixed:'left'}
 				         ,{field: 'id', title: 'ID',align:'center'}
-				         ,{field: 'loginname', title: '用户名',align:'center'}
-				         ,{field: 'loginip', title: '登录地址',align:'center'}
-				         ,{field: 'logintime', title: '登录时间',align:'center'}
+				         ,{field: 'method', title: 'METHOD',align:'center'}
+				         ,{field: 'params', title: 'PARAMS',align:'center'}
+				         ,{field: 'ip', title: '登录地址',align:'center'}
+				         ,{field: 'loginname', title: '登录名称',align:'center'}
+				         ,{field: 'time', title: '时长',align:'center'}
+				         ,{field: 'createdate', title: '登录时间',align:'center'}
 				         ,{fixed: 'right', title: '操作', toolbar: '#loginfoRowBar',align:'center'}
 					]
 				]
@@ -151,7 +154,7 @@
 		function deleteInfo (data) {
 			//得到选中数据
 				layer.confirm('你确定要删除这条数据吗?',{icon: 3, title: '提示'},function(index){
-			 	$.post('../../../loginfo/deleteSysLoginfo',{id:data.id},function(res){
+			 	$.post('../../../loginfo/deleteSysLog',{id:data.id},function(res){
 					if(res.code == 200) {
 						tableIns.reload();
 					}

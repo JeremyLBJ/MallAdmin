@@ -9,13 +9,15 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.google.gson.Gson;
 import com.lhd.sys.common.ActiverUser;
 import com.lhd.sys.common.WebUntils;
 import com.lhd.sys.common.annotation.SysLog;
-import com.lhd.sys.entity.AopEntity;
+import com.lhd.sys.service.LoginfoService;
+import com.lhd.sys.vo.SysLogVO;
 
 /**
  * 
@@ -29,8 +31,8 @@ import com.lhd.sys.entity.AopEntity;
 @Component
 public class SysLogAspect {
 	
-	/*@Autowired
-	private LoginfoService loginfoService ;*/
+	@Autowired
+	private LoginfoService loginfoService ;
 	
 	@Pointcut("@annotation(com.lhd.sys.common.annotation.SysLog)")
 	public void logPointCut() { 
@@ -57,41 +59,40 @@ public class SysLogAspect {
 		Method method = signature.getMethod();
 
 		
-		
-		AopEntity aopEntity = new AopEntity() ;
+		SysLogVO logVO = new SysLogVO() ;
 	
 		SysLog syslog = method.getAnnotation(SysLog.class);
 		if(syslog != null){
 			//注解上的描述
-			aopEntity.setOperation(syslog.value());
+			logVO.setOperation(syslog.value());
 		}
 
 		//请求的方法名
 		String className = joinPoint.getTarget().getClass().getName();
 		String methodName = signature.getName();
-		aopEntity.setMethod(className + "." + methodName + "()");
+		logVO.setMethod(className + "." + methodName + "()");
 
 		//请求的参数
 		Object[] args = joinPoint.getArgs();
 		try{
 			String params = new Gson().toJson(args[0]);
-			aopEntity.setParams(params);
+			logVO.setParams(params);
 		}catch (Exception e){
 
 		}
 
 		//设置IP地址
-		aopEntity.setIp(WebUntils.getRequest().getRemoteAddr());
+		logVO.setIp(WebUntils.getRequest().getRemoteAddr());
 		
 		//用户名
 		String username = ((ActiverUser) SecurityUtils.getSubject().getPrincipal()).getSysUser().getName() ;
-		aopEntity.setLoginname(username) ;
+		logVO.setLoginname(username) ;
 
-		aopEntity.setTime(time);
-		aopEntity.setCreateDate(new Date());
+		logVO.setTime(time);
+		logVO.setCreatedate(new Date());
 		//保存系统日志
-//		loginfoService.loginMessage(sysLog) ;
-		System.out.println("aop拦截::::::"+aopEntity);
+		loginfoService.SysLogin(logVO) ;
+		System.out.println("aop拦截::::::"+logVO);
 	}
 
 }
