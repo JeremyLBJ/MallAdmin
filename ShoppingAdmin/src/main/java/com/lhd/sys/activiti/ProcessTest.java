@@ -27,6 +27,7 @@ import com.lhd.sys.Config.ActivitiConfig;
  */
 public class ProcessTest {
 	
+	
 	private ProcessEngineConfiguration configuration = ActivitiConfig.activitiConfigStatic() ;
 	
 	

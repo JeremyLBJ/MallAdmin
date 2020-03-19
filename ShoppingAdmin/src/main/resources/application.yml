@@ -2,10 +2,12 @@
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/highconcurrency?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    url: jdbc:mysql://localhost:3306/highconcurrency?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&nullCatalogMeansCurrent=true
     username: root
-    password: a   
-    
+    password: a
+  activiti:
+    check-process-definitions: false
+    history-level: full   
     
   http:
     multipart:
