@@ -28,6 +28,38 @@
   		SELECT * FROM `order_list` ol WHERE ol.isShow = 1
   </select>
   
+    <select id="allFindOrderLists" resultMap="BaseResultMap">
+  	SELECT * FROM `order_list` sli
+  		<where>
+  			<if test="userName != '' and userName != null">
+  				and sli.userName LIKE concat('%',#{userName},'%')
+  			</if>
+  			<if test="rioId != '' and rioId != null">
+  				and sli.rioId LIKE concat('%',#{rioId},'%')
+  			</if>
+  			<if test="startTime != null and endTime == null">
+  				and sli.createTime &gt; ( #{startTime} )
+  			</if>
+  			<if test="startTime == null and endTime != null">
+  				and sli.createTime &lt; ( #{endTime} )
+  			</if>
+  			<if test="startTime != null and endTime != null">
+  				and sli.createTime BETWEEN #{startTime} and #{endTime}
+  			</if>
+  			<if test="isShow != null">
+  				and sli.isShow = #{isShow}
+  			</if>
+  		</where>
+  	</select>
+  	
+  	 <delete id="batchDelete" parameterType="Integer">
+  	DELETE FROM order_list  WHERE id  IN
+  	<foreach collection="array" item="id"
+  		 open="(" separator="," close=")">
+  		#{id}
+  	</foreach>
+  </delete>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

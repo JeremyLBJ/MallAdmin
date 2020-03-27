@@ -66,7 +66,6 @@ public class ShiorConfig {
 		//如果登录需要放行登录方法
 		//filterChainDefinitionMap.put("/admin/adminLoginByShiro", "anon") ;
 		//resources 目录下的所有资源进行权限控制
-		System.out.println("拦截");
 		filterChainDefinitionMap.put("/resources/css/*", "anon") ;
 		filterChainDefinitionMap.put("/resources/images/*", "anon") ;
 		filterChainDefinitionMap.put("/resources/js/*", "anon") ;
@@ -75,13 +74,13 @@ public class ShiorConfig {
 		filterChainDefinitionMap.put("/resources/page/main.html", "anon") ;
 		filterChainDefinitionMap.put("/resources/css/404.html", "anon") ;
 		//拦截admin下面所有的方法请求
-		filterChainDefinitionMap.put("/SysAdmin/toLogin", "anon") ;
-		filterChainDefinitionMap.put("/SysAdmin/toLogin", "anon") ;
-		filterChainDefinitionMap.put("/SysAdmin/**", "authc") ;
+		filterChainDefinitionMap.put("/HiMallAdmin/toLogin", "anon") ;
+		filterChainDefinitionMap.put("/HiMallAdmin/toLogin", "anon") ;
+		filterChainDefinitionMap.put("/HiMallAdmin/**", "authc") ;
 		
 		
 		//修改权限拦截是指定跳转页面
-		shiroFilterFactoryBean.setLoginUrl("/SysAdmin/toLogin");
+		shiroFilterFactoryBean.setLoginUrl("/HiMallAdmin/toLogin");
 		//设置未授权页面
 		shiroFilterFactoryBean.setUnauthorizedUrl("") ;
 		

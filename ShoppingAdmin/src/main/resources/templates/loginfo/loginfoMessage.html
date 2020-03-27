@@ -116,6 +116,15 @@
 				         ,{fixed: 'right', title: '操作', toolbar: '#loginfoRowBar',align:'center'}
 					]
 				]
+				,done:function(res,count,item){
+			 		if(res.data.length == 0 && curr != 1) {
+			 			tableIns.reload({
+			 				page:{
+			 					curr:(curr-1)
+			 				}
+			 			});
+			 		}
+			 	}
 		});
 		
 		//模糊查询

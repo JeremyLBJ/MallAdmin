@@ -92,7 +92,6 @@ public class SysLogAspect {
 		logVO.setCreatedate(new Date());
 		//保存系统日志
 		loginfoService.SysLogin(logVO) ;
-		System.out.println("aop拦截::::::"+logVO);
 	}
 
 }

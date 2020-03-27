@@ -2,6 +2,7 @@ package com.lhd.sys.service;
 
 import java.util.List;
 
+import com.lhd.sys.entity.SysDept;
 import com.lhd.sys.entity.SysRole;
 import com.lhd.sys.entity.SysUser;
 import com.lhd.sys.untils.LaYuiPage;
@@ -44,6 +45,9 @@ public interface SysUserService {
 	
 	SysUser findLearderById ( Integer id ) ;
 	
+	//根据部门id 查找对应信息
+	SysDept queryDeptByDeptId ( Integer deptId ) ;
+	
 	
 	//查找可用的角色
 	List<SysRole> initRoleByUserId ( Integer id ) ;
@@ -56,5 +60,8 @@ public interface SysUserService {
 	
 	//根据用户 uid  和权限 rid  添加
 	void saveSysUser ( Integer uid , Integer [] ids ) ;
+	
+	//根据用户的mgr查找上级管理者
+	SysUser findByMgr ( Integer mgr ) ;
 
 }

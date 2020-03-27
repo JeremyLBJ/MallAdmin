@@ -103,7 +103,6 @@ public class MiaoShaShopController {
 		Integer maxIdOfMiaoShaShop = null ;
 		 if ( null == id ) {
 			 maxIdOfMiaoShaShop = this.miaoShaService.maxIdOfMiaoShaShop() ;
-			 System.out.println(maxIdOfMiaoShaShop+":::::最大id为");
 		 } else {
 			 maxIdOfMiaoShaShop = id ;
 		 }

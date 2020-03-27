@@ -2,6 +2,8 @@ package com.lhd.sys.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class OrderList {
 	
 	private Integer cId;
@@ -44,6 +46,7 @@ public class OrderList {
      *
      * @mbg.generated Sat Nov 16 18:45:00 CST 2019
      */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date createtime;
 
     /**

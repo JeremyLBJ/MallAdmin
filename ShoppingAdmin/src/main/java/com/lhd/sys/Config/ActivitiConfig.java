@@ -19,7 +19,6 @@ public class ActivitiConfig {
 	
 	//得到流程引擎
 	ProcessEngine engine = configuration.buildProcessEngine() ;
-	System.out.println(engine.toString());
 	return configuration ;
 	}
 	
@@ -37,7 +36,6 @@ public class ActivitiConfig {
 		
 		//得到流程引擎
 		ProcessEngine engine = configuration.buildProcessEngine() ;
-		System.out.println(engine.toString());
 	}
 	
 

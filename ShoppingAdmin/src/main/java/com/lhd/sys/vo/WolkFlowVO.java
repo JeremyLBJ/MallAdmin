@@ -15,8 +15,21 @@ public class WolkFlowVO implements Serializable {
 	
 	private Integer [] ids ;
 	
+	private Integer id ;
+	
+	private String taskId ;
+	
 	//流程部署名称
 	private String deploymentName ;
+	
+	//流程部署ID
+	private String deploymentId ;
+	
+	//连线名称
+	private String outcome ;
+	
+	//批注内容
+	private String comment ;
 
 	public Integer getPage() {
 		return page;
@@ -49,7 +62,46 @@ public class WolkFlowVO implements Serializable {
 	public void setDeploymentName(String deploymentName) {
 		this.deploymentName = deploymentName;
 	}
-	
+
+	public String getDeploymentId() {
+		return deploymentId;
+	}
+
+	public void setDeploymentId(String deploymentId) {
+		this.deploymentId = deploymentId;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getTaskId() {
+		return taskId;
+	}
+
+	public void setTaskId(String taskId) {
+		this.taskId = taskId;
+	}
+
+	public String getOutcome() {
+		return outcome;
+	}
+
+	public void setOutcome(String outcome) {
+		this.outcome = outcome;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 	
 
 }

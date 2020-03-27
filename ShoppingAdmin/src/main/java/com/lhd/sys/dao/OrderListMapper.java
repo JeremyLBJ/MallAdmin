@@ -2,6 +2,8 @@ package com.lhd.sys.dao;
 
 import com.lhd.sys.entity.OrderList;
 import com.lhd.sys.entity.OrderListExample;
+
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,6 +12,14 @@ public interface OrderListMapper {
 	List<OrderList> findIsShowOne () ;
 	
 	List<OrderList> findAllOrderLists (@Param ("page") int page ,@Param ("limit") int  limit) ;
+	
+	List<OrderList> allFindOrderLists (@Param("userName") String userName
+									 , @Param("rioId") String rioId
+									 , @Param("startTime") Date startTime 
+									 , @Param("endTime") Date endTime
+									 , @Param("isShow") Integer isShow ) ;
+	
+	void batchDelete ( Integer [] ids) ;
 	
 	
     /**

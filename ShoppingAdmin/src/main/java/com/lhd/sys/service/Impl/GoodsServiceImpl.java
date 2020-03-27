@@ -149,7 +149,6 @@ public class GoodsServiceImpl implements GoodsService{
 	@Override
 	@Transactional
 	public void updateShop(GoodsVO goodsVO) {
-		System.out.println(goodsVO.toString());
 		this.goodsItemMapper.updateShopById( goodsVO.getCname(),goodsVO.getInventory() ,goodsVO.getPrice() 
 												, goodsVO.getBrand() , new Date(), goodsVO.getDetail(),  goodsVO.getId(), goodsVO.getCid() ) ;
 		
@@ -166,7 +165,6 @@ public class GoodsServiceImpl implements GoodsService{
 	@Override
 	@Transactional
 	public void addShop(ClassificationofGoodsItem goodsItem) {
-		System.out.println(goodsItem.toString());
 		goodsItem.setCreateTime(new Date());
 		goodsItem.setShowstatus(1);
 		this.goodsItemMapper.insert(goodsItem) ;

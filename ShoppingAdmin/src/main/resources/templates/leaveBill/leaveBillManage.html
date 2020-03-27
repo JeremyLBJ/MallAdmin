@@ -61,18 +61,12 @@
 
 <!-- 数据表格开始 -->
 <div>
-	<table class="layui-hide" id="noticeTable" lay-filter="noticeTable"></table>
+	<table class="layui-hide" id="leaveBillTable" lay-filter="leaveBillTable"></table>
 	
 	<div id="noticeToolBar" style="display: none;">   
-		<button type="button" lay-event="addLeaveBill"  shiro:hasPermission="notice:create" class="layui-btn layui-btn-sm"><span class="layui-icon layui-icon-add-1"></span>添加</button>
-		<button type="button" lay-event="batchDelete" shiro:hasPermission="notice:delete" class="layui-btn layui-btn-sm layui-btn-danger"><span class="layui-icon layui-icon-delete"></span>批量删除</button>
+		<button type="button" lay-event="addLeaveBill"   class="layui-btn layui-btn-sm"><span class="layui-icon layui-icon-add-1"></span>添加</button>
+		<button type="button" lay-event="batchDelete"  class="layui-btn layui-btn-sm layui-btn-danger"><span class="layui-icon layui-icon-delete"></span>批量删除</button>
 	</div>
-	
-	<!-- <div id="noticeRowBar" style="display: none;">
-		<button type="button" lay-event="delete" shiro:hasPermission="notice:delete" class="layui-btn layui-btn-sm layui-btn-danger"><span class="layui-icon layui-icon-delete"></span>提交申请</button>
-		<button type="button" lay-event="edit" shiro:hasPermission="notice:edit" class="layui-btn layui-btn-sm "><span class="layui-icon layui-icon-edit"></span>编辑</button>
-		<button type="button" lay-event="show" shiro:hasPermission="notice:viewnotice" class="layui-btn layui-btn-sm layui-btn-danger"><span class="layui-icon layui-icon-about"></span>删除</button>
-	</div> -->
 	
 </div>
 <!-- 数据表格结束 -->
@@ -86,7 +80,7 @@
 				<!--  状态  -->
 				<input type="hidden" name="state" value="0" id="state">
 				<div class="layui-input-block">
-					<input type="text" name="title" lay-verify="required"
+					<input type="text" name="title" lay-verify="required" 
 						autocomplete="off" placeholder="请输入请假主题" class="layui-input">
 				</div>
 			</div>
@@ -138,12 +132,12 @@
    		 <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
    		 <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">删除</a>
 	{{#  } else if(d.state==1){ }}
- 		<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="view">审批查询</a>
+ 		<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="spRecord">审批查询</a>
     {{#  } else if(d.state==2){ }}	
-		 <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="view">审批查询</a>
+		 <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="spRecord">审批查询</a>
  	 {{#  } else if(d.state==3){ }}	
 		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">删除</a>
-    	<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="view">审批查询</a>
+    	<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="spRecord">审批查询</a>
 	{{#  } }}  
 </script>
 
@@ -163,25 +157,25 @@
 		laydate.render({
 			elem:'#startTime',
 			type:'datetime',
-			format: 'yyyy-MM-dd HH:mm:ss'
+			format: 'yyyy-MM-dd HH:mm'
 		});
 		laydate.render({
 			elem:'#endTime',
 			type:'datetime',
-			format: 'yyyy-MM-dd HH:mm:ss'
+			format: 'yyyy-MM-dd HH:mm'
 		});
 		
 		
 		laydate.render({
 			elem:'#leaveTime',
 			type:'datetime',
-			format: 'yyyy-MM-dd HH:mm:ss'
+			format: 'yyyy-MM-dd HH:mm'
 		});
 		
 		//加载数据
 		
 		var tableIns=table.render({
-			elem:'#noticeTable'
+			elem:'#leaveBillTable'
 				,url:'../../../sysLeaveBill/leaveBillInfo'
 				,toolbar:'#noticeToolBar'
 				,title:'请假'
@@ -201,9 +195,9 @@
 				        	 } else if (d.state == 1) {
 				        		 html = "<font color=blue>审批中</font>" ;
 				        	 } else if (d.state == 2) {
-				        		 html = "<font color=green>已放弃</font>" ;
+				        		 html = "<font color=green>审批完成</font>" ;
 				        	 } else if (d.state == 3) {
-				        		 html = "<font color=yellow>未提交</font>" ;
+				        		 html = "<font color=yellow>已放弃</font>" ;
 				        	 } else {
 				        		 html = "<font color=gray>未知状态</font>" ;
 				        	 }
@@ -229,7 +223,7 @@
 		});
 		
 		//监听工具条事件
-		table.on("toolbar(noticeTable)",function(obj){
+		table.on("toolbar(leaveBillTable)",function(obj){
 			switch(obj.event){
 			case 'batchDelete' :
 				batchDelete();
@@ -241,17 +235,23 @@
 		});
 		
 		//监听行工具条事件
-		table.on("tool(noticeTable)",function(obj){
+		table.on("tool(leaveBillTable)",function(obj){
 			var data = obj.data ;
 			switch(obj.event){
-			case 'delete' :
-				deleteInfo(data);
+			case 'startProcess' :
+				startProcess(data);
 			break ;
 			case 'edit' :
 				edit(data);
 			break ;
 			case 'show' :
 				showNotice(data);
+			break ;
+			case 'delete' :
+				del(data);
+			break ;
+			case 'spRecord' :
+				spRecord(data);
 			break ;
 			}
 		});
@@ -291,7 +291,40 @@
 			});
 		}
 		
-		//添加
+		//删除
+		function del(data) {
+			layer.confirm('你确定要删除这条数据吗?',{icon: 3, title: '提示'},function(index){
+			 	 $.post('../../../sysLeaveBill/deleteLaeveBill',{id:data.id},function(res){
+					if(res.code == 200) {
+						tableIns.reload();
+					}
+					layer.msg(res.msg);
+				})  
+					layer.close(index);
+				});
+		}
+		
+		//查阅审批记录
+		function spRecord (data) {
+			 var index = layui.layer.open({
+       		  title: data.title+'审批进度'
+       		 ,type: 2
+       		 ,area:["800px","500px"]
+       	     ,content:'../../../sysLeaveBill/spRecordView?id='+data.id
+       	     ,success: function(layero, index){
+       	    	 setTimeout(function(){
+       	    		 layui.layer.tips('','layui-layer-setwin .layui-layer-close',{
+       	    			 tips: 3
+       	    		 }) ;
+       	    	 },500)
+       	     }
+       	 })
+	       	 $(window).on("resize",function(){
+	       		 layui.layer.full(index) ;
+	       	 })
+		}
+		
+		  //添加
 			$("#doSubmit").on('click',function(){
 				var data = $("#dataFrm").serialize();
 				$.post(url,data,function(res){
@@ -304,37 +337,17 @@
 				return false ;
 			});
 		
-		//修改
-		
-		//删除
-		function deleteInfo (data) {
-			//得到选中数据
-				layer.confirm('你确定要删除这条数据吗?',{icon: 3, title: '提示'},function(index){
-			 	 $.post('../../../sysLeaveBill/deleteLaeveBill',{id:data.id},function(res){
-					if(res.code == 200) {
-						tableIns.reload();
-					}
-					layer.msg(res.msg);
-				})  
-					layer.close(index);
-				});
-		}
-		
 		//批量删除
 		function batchDelete (){
 			//得到选中数据
-			var checkStatus = table.checkStatus('noticeTable');
+			var checkStatus = table.checkStatus('leaveBillTable');
 			var dataLength = checkStatus.data.length ;
 			if (dataLength > 0){
 				layer.confirm('你确定要删除这些数据吗?',{icon: 3, title: '提示'},function(index){
 				var data = checkStatus.data;//获取选中行数据
 				var params ;
 				$.each(data,function(index,item){
-			 	/* if(index == 0) {
-						ids+= item.id;
-					} else {
-						ids+= "&ids="+item.id ;
-					}   */
+			
 					params+="&ids="+item.id ;
 				})
 			 	$.post('../../../sysLeaveBill/batechDelete',params,function(res){
@@ -351,20 +364,14 @@
 			}
 		}
 		
-		//弹出查看
-		function showNotice(data) {
-			mainIndex = layer.open({
-				type:1,
-				content:$("#showNotice"),
-				area:['500px','300px'],
-				title:'查看公告',
-				success:function(){
-					$("#show_title").html(data.title);
-					$("#show_opername").html(data.opername);
-					$("#show_createtime").html(data.createtime);
-					$("#show_content").html(data.content);
-				}
-			});
+		//启动流程
+		function startProcess (data) {
+			layer.confirm('确定要提交['+data.title+']请假单吗?',{icon: 3, title: '提示'},function(index){
+			 	$.post('../../../processDeployment/startProcess',{id:data.id},function(res){
+			 		tableIns.reload();
+				}) 
+				layer.close(index);
+				});
 		}
 		
 	});

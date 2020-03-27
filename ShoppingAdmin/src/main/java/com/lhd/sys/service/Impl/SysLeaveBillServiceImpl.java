@@ -64,4 +64,23 @@ public class SysLeaveBillServiceImpl implements SysLeaveBillService {
 		
 	}
 
+	@Override
+	public SysLeavebill findById(Integer id) {
+		SysLeavebill leavebill = this.sysLeaveBill.selectByPrimaryKey(id) ;
+		return leavebill ;
+	}
+
+	@Override
+	@Transactional
+	public void updateLeave(SysLeavebill leavebill) {
+		this.sysLeaveBill.updateByPrimaryKeySelective(leavebill) ;
+		
+	}
+
+	@Override
+	public SysLeavebill findByIdLeaveBillManager(Integer id) {
+		SysLeavebill leavebill = this.sysLeaveBill.selectByPrimaryKey(id) ;
+		return leavebill ;
+	}
+
 }

@@ -85,7 +85,7 @@ public class SysUserServiceImpl implements SysUserService{
 				s.setDeptname(selectByExample.get(0).getTitle());
 			}
 			Integer mgr = s.getMgr() ;
-			if (null != mgr) {
+			if (0 != mgr) {
 				//自关联查询  sys_user 表  并设置部门领导的姓名
 				SysUserExample example = new SysUserExample() ;
 				example.createCriteria().andIdEqualTo(mgr) ;
@@ -255,6 +255,28 @@ public class SysUserServiceImpl implements SysUserService{
 	public SysUser userLogin(String name, String pwd) {
 		SysUser user = this.sysUserMapper.userLogin(name, pwd) ;
 		return user;
+	}
+
+
+
+	/**
+	 * 查找上级管理者
+	 */
+	@Override
+	public SysUser findByMgr(Integer mgr) {
+		SysUser user = this.sysUserMapper.findByMgr(mgr) ;
+		return user ;
+	}
+
+
+
+	/**
+	 * 查找部门信息
+	 */
+	@Override
+	public SysDept queryDeptByDeptId(Integer deptId) {
+		SysDept sysDept = sysDeptMapper.selectByPrimaryKey(deptId) ;
+		return sysDept ;
 	}
 	
 }

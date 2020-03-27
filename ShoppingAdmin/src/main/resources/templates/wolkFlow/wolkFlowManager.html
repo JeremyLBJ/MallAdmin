@@ -34,17 +34,21 @@
 </form>
 <table id="deploymentList" lay-filter="deploymentList"></table>
 <table id="processDefinitionList" lay-filter="processDefinitionList"></table>
+
+
+
 <!--表格工具条-->
 <script type="text/html" id="deploymentTableToolBar">
 	<a class="layui-btn layui-btn layui-btn" lay-event="add">添加</a>
-	<a class="layui-btn layui-btn layui-btn-danger" lay-event="batchDel">批量删除</a>
 </script>
 <!--操作-->
 <script type="text/html" id="deploymentListBar">
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">查看流程图</a>
 </script>
-<script type="text/javascript" src="../layui/layui.js"></script></body>
+<script type="text/javascript" src="../layui/layui.js"></script>
+
+</body>
 <script type="text/javascript">
     var tableDeploymentIns ;
     var tableprocessDefinitionIns ;
@@ -66,7 +70,7 @@
             ,limits : [5,10,15,20]
             ,defaultToolbar: ['filter']
             ,limit : 5
-            ,id : "deploymentListTable"
+            ,id : "deploymentListTable"//批量删除使用此地的ID获取选中的表格数据
             ,cols : [
             	[
                  {type: "checkbox", fixed:"left", width:50}
@@ -101,6 +105,30 @@
             ]
             	]
         }) ;
+      
+      
+      
+      //监听工具条事件
+		table.on("toolbar(deploymentList)",function(obj){
+			switch(obj.event){
+			case 'add' :
+				add() ;
+			break ;
+			}
+		}) ;
+      
+      //监听表格工具事件
+      table.on("tool(deploymentList)",function(obj){
+    	  var data = obj.data ;
+    	  switch(obj.event){
+			case 'del' :
+				del(data) ;
+			break ;
+			case 'edit' :
+				edit(data) ;
+			break ;
+			}
+      }) ;
 
          //查询
         $(".search_btn").on("click",function(){
@@ -114,6 +142,58 @@
                 url: '../../../activitiDefinition/processDefinition?'+params
             }) ;  
         }) ; 
+         
+         //添加  打开流程部署弹出层
+         function add () {
+        	 var index = layui.layer.open({
+        		  title: '添加流程'
+        		 ,type: 2
+        		 ,area: ["800px","500px"]
+        	     ,content: "../../../processDeployment/wolkFlowAdd"
+        	     ,success:function(){
+        	    	 setTimeout(function(){
+        	    		 layui.layer.tips('点击此处返回流程列表','layui-layer-setwin .layui-layer-close',{
+        	    			 tips: 3
+        	    		 }) ;
+        	    	 },500)
+        	     }
+        	 }) ;
+         }
+         
+         //删除
+         function del (data) {
+        	//得到选中数据
+				layer.confirm('你确定要删除这条数据吗?',{icon: 3, title: '提示'},function(index){
+			 	 $.post('../../../processDeployment/deleteProcessDeployment',{deploymentId:data.id},function(res){
+					if(res.code == 200) {
+						 tableDeploymentIns.reload() ;
+						 tableprocessDefinitionIns.reload() ;
+					}
+					layer.msg(res.msg) ;
+				}) 
+				layer.close(index) ;
+				});
+         }
+         
+         //查看流程图
+          function edit (data) {
+        	 var index = layui.layer.open({
+        		  title: '查看['+data.name+']流程图'
+        		 ,type: 2
+        		 ,area:["500px","600px"]
+        	     ,content:'../../../processDeployment/processDeploymentImg?deploymentId='+data.id
+        	     ,success: function(layero, index){
+        	    	 setTimeout(function(){
+        	    		 layui.layer.tips('点击此处返回流程列表','layui-layer-setwin .layui-layer-close',{
+        	    			 tips: 3
+        	    		 }) ;
+        	    	 },500)
+        	     }
+        	 })
+        	 $(window).on("resize",function(){
+        		 layui.layer.full(index) ;
+        	 })
+         } 
          
     }) ;
         </script>

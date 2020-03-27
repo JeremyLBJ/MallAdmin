@@ -2,8 +2,6 @@ package com.lhd.sys.entity;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class SysLeavebill {
@@ -50,7 +48,6 @@ public class SysLeavebill {
      *
      * @mbg.generated Sun Mar 15 10:52:18 CST 2020
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date leavetime;
 

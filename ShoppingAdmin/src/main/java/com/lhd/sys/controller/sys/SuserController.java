@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/SysAdmin")
+@RequestMapping("/HiMallAdmin")
 public class SuserController {
 	
 	
@@ -56,7 +56,7 @@ public class SuserController {
 	//订单列表
 	@RequestMapping("/newList")
 	public String newList () {
-		return "news/newsList.html" ;
+		return "orderList/orderListManaget.html" ;
 	}
 	
 	//系统公告

@@ -10,7 +10,7 @@ public class ResultObject {
 	
 	public static final ResultObject LONG_ERROR_PASS = new ResultObject(Constast.ERROR, "登录失败,用户名或密码不正确") ;
 	
-	public static final ResultObject LONG_ERROR_CODE= new ResultObject(Constast.ERROR, "登录失败,验证码不正确") ;
+	public static final ResultObject LONG_ERROR_CODE= new ResultObject(Constast.CODE_ERROR, "登录失败,验证码不正确") ;
 	
 	public static final ResultObject DELETE_SUCCESS= new ResultObject(Constast.OK, "删除成功") ;
 	

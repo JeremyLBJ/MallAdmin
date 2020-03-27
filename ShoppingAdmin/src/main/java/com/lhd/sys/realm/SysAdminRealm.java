@@ -64,10 +64,8 @@ public class SysAdminRealm extends AuthorizingRealm {
 		
 	/*	UsersTable user2 = userService.loginUser(user) ;*/
 		 SysUser user = sysUserService.userLogin(sysUser.getName(), sysUser.getPwd()) ;
-			System.out.println(user);
 			if ( null == user ) {
 				//用户信息错误
-				System.out.println("执行认证方法");
 				return null ; //Shiro 底层会抛出UnknowAccountException
 			} else {
 					ActiverUser activerUser = new ActiverUser();
@@ -117,12 +115,10 @@ public class SysAdminRealm extends AuthorizingRealm {
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		System.out.println("执行授权方法");
 		SimpleAuthorizationInfo authorizationInfo=new SimpleAuthorizationInfo();
 		ActiverUser activerUser=(ActiverUser) principals.getPrimaryPrincipal();
 		SysUser user=activerUser.getSysUser() ;
 		List<String> permissions = activerUser.getPermissions();
-		System.out.println(permissions+"::::::权限");
 		if(user.getType()==Constast.USER_TYPE_SUPER) {
 			authorizationInfo.addStringPermission("*:*");
 		}else {
@@ -130,7 +126,6 @@ public class SysAdminRealm extends AuthorizingRealm {
 				authorizationInfo.addStringPermissions(permissions);
 			}
 		}
-		System.out.println(authorizationInfo.getStringPermissions().toString()+"::::::::");
 		return authorizationInfo;
 	}
 

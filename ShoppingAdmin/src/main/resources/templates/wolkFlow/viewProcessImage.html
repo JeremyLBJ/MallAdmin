@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div{
+		border:2px solid red ;
+		padding: 4px;
+	}
+
+</style>
+</head>
+
+<body>
+	<img alt="流程图" id="imgs" src="">
+	<div id="imgStyle"  ></div>
+
+</body>
+<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+
+      $("#imgs").attr("src","../../../processDeployment/toViewProcessImage?deploymentId="+'[[${deploymentId}]]') ;
+      var x = ('[[${map.x}]]') ;
+      var y = '[[${map.y}]]'+"px" ;
+      var width = '[[${map.width}]]'+"px" ;
+      var height = '[[${map.height}]]'+"px" ;
+      
+      var lefts = parseInt('[[${map.x}]]') ;
+      var tops = parseInt('[[${map.y}]]');
+      var wid = parseInt('[[${map.width}]]') ;
+      var hei = parseInt('[[${map.height}]]') ;
+      
+      var px = "px" ;
+      var s = lefts+"px" ;
+      var a = tops+"px" ;
+      var b = wid+"px";
+      var c = hei+"Px" ;
+      
+	var imgStyle =  $("#imgStyle") ;
+	$('#imgStyle').css('position',"absolute");
+	$('#imgStyle').css('left',""+s+"");
+	$('#imgStyle').css('top',a);
+	$('#imgStyle').css('width',""+b+"");
+	$('#imgStyle').css('height',""+c+"");
+	
+
+	function getUrlParam(name){ 
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)") ; 
+		var r = window.location.search.substr(1).match(reg) ; 
+		if (r!=null) return unescape(r[2]); 
+		return null ; 
+	}
+</script>
+</html>

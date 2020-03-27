@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>查询任务办理进度</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="../css/public.css" media="all" />
+</head>
+<body class="childrenBody">
+
+	<form action="" method="post" class="layui-form layui-form-pane" id="dataFrm" lay-filter="dataFrm">
+			<div class="layui-form-item">
+				<label class="layui-form-label">请假标题</label>
+				<!--  状态  -->
+				<div class="layui-input-block">
+					<input type="text" id="title" name="title" disabled="disabled" lay-verify="required" 
+						autocomplete="off"  class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">请假天数</label>
+				<div class="layui-input-inline">
+					<input type="text" name="days" id="days" disabled="disabled" class="layui-input">
+				</div>
+				<label class="layui-form-label">请假时间</label>
+				<div class="layui-input-inline">
+					<input type="text" name="leavetime" disabled="disabled"  id="leaveTime"  class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">请假原因</label>
+				<div class="layui-input-block">
+					 <textarea class="layui-textarea " disabled="disabled" name="content"  id="content"></textarea>
+				</div>
+			</div>
+		</form>
+	<table id="commentList" lay-filter="commentList"></table>
+<script type="text/javascript" src="../layui/layui.js"></script>
+<script type="text/javascript">
+	layui.use(['jquery','form','layer','table'],function(){
+		var $=layui.jquery;
+		var form=layui.form;
+		var table=layui.table;
+		var layer=layui.layer;
+		
+       var tableTask = table.render({
+             elem: '#commentList'
+            ,url : '../../../sysLeaveBill/commentByLeaveBillId?id='+'[[${leaveBill.id}]]'
+            ,cellMinWidth : 95
+            ,height : "full-350"
+            ,defaultToolbar: ['filter']
+            ,id : "commentListTable"//批量删除使用此地的ID获取选中的表格数据
+            ,cols : [
+            	[
+                 {field: 'userId', title: '批注人', minWidth:100, align:"center"}
+                ,{field: 'time', title: '批注时间', minWidth:100, align:"center"}
+                ,{field: 'message', title: '批注内容', minWidth:100, align:"center"}
+            ]
+            	]
+        }) ;
+		
+        //设置form表单内容
+		var find  = '[[${leaveBill.id}]]' ; 
+		$("#title").val('[[${leaveBill.title}]]') ;
+		$("#days").val('[[${leaveBill.days}]]') ;
+		$("#leaveTime").val(date('[[${leaveBill.leavetime}]]')) ;
+		$("#content").val('[[${leaveBill.content}]]') ;
+		/* 
+		var data = '[[${outcomes}]]' ;
+		//提交或者同意
+		var submits = data.substring(1,3) ;
+		//失败获取驳回
+		var abandon = data.substring(5,7) ;
+		$("#block").html("<button type='button' class='layui-btn' lay-submit='' id='doSubmit'><span class='layui-icon layui-icon-add-1'></span>"+submits+"</button>"
+							+"<button type='reset' id='doAbandon' class='layui-btn layui-btn-warm'><span class='layui-icon layui-icon-refresh-1'></span>"+abandon+"</button> ") ;
+		 */
+		//修改时间函数
+		function date(datetime){
+			var dates = new Date(datetime);
+			var y = dates.getFullYear();
+			var m = dates.getMonth() + 1;
+			var d = dates.getDate();
+			var h = dates.getHours();
+			var mi = dates.getMinutes();
+			m = m > 9 ? m : '0' + m;
+			var second=dates.getSeconds();
+            second=second < 10 ? ('0' + second) : second;
+			return y + '-' + m + '-' + d + ' ' + h + ':' + mi + ':'+ second ;
+	
+		}
+		
+	});
+</script>
+</body>
+</html>

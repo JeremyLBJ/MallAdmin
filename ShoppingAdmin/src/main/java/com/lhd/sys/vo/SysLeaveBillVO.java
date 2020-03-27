@@ -23,7 +23,7 @@ public class SysLeaveBillVO extends SysLeavebill implements Serializable{
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date endTime ;
-
+	
 	public Integer getPage() {
 		return page;
 	}

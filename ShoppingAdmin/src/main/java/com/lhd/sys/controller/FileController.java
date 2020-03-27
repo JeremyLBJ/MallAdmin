@@ -163,7 +163,6 @@ public class FileController {
 	@RequestMapping("/cleanImgs")
 	@ResponseBody
 	public Map<String, Object> cleanImgs ( Integer id ) {
-		System.out.println(id+":::::删除时的id为");
 		Map<String, Object> map = new HashMap<>() ;
 		Integer maxId = null ;
 		if ( null == id ) {

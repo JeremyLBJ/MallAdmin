@@ -21,7 +21,6 @@ xsi:schemaLocation=
   <groupId>com.lhd</groupId>
   <artifactId>ShoppingsAdmin</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
   
   
   <dependencies>
@@ -256,8 +255,6 @@ xsi:schemaLocation=
 		</dependency>
 
 	</dependencies>
-
-  
   
   	<build>
 		<plugins>
@@ -295,6 +292,6 @@ xsi:schemaLocation=
 		
 	</build>
 	
-
+	<packaging>jar</packaging>
 
 </project>

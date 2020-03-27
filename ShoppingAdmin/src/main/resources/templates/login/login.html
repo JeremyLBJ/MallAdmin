@@ -2,7 +2,7 @@
 <html class="loginHtml" >
 <head>
 	<meta charset="utf-8">
-	<title>登录--layui后台管理模板 2.0</title>
+	<title>商城管理系统登录</title>
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -24,19 +24,16 @@
 			<label for="password">密码</label>
 			<input type="password" placeholder="请输入密码" autocomplete="off" name="password" class="layui-input" lay-verify="required">
 		</div>
-		<div class="layui-form-item input-item" id="imgCode">
+		<!-- <div class="layui-form-item input-item" id="imgCode">
 			<label for="code">验证码</label>
 			<input type="text" placeholder="请输入验证码" autocomplete="off" name="code" class="layui-input">
-			<img src="../images/code.jpg">
-		</div>
+			images/code.jpg
+			<img id="yzm_img"  title="点击刷新验证码" src="../../../imgCode/getVerifiCode">
+		</div> -->
 		<div class="layui-form-item">
 			<button class="layui-btn layui-block" lay-filter="login" lay-submit>登录</button>
 		</div>
-		<div class="layui-form-item layui-row">
-			<a href="javascript:;" class="seraph icon-qq layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4"></a>
-			<a href="javascript:;" class="seraph icon-wechat layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4"></a>
-			<a href="javascript:;" class="seraph icon-sina layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4"></a>
-		</div>
+	
 	</form>
 	<script type="text/javascript" src="../layui/layui.js"></script>
 	<!-- <script type="text/javascript" src="login.js"></script> -->
@@ -60,19 +57,27 @@
 	    	btn.text("登录中...").attr("disabled","disabled").addClass("layui-disabled");
 	    	$.post("../../../sys/adminLoginByShiro",data.field,function(rs){
 	    		//设置登录按钮 恢复可点击 在前端防止  重复点击
-	    		btn.text("登录").attr("disabled",false).removeClass("layui-disabled") ;
+	    		btn.text("登录").attr("disabled",true).removeClass("layui-disabled") ;
 	    		layer.msg(rs.msg) ;
-	    		if(rs.code != 200){
-	    			layer.msg(rs.msg);
-	    		} else {
+	    		if(rs.code == 200){
 	    			//跳转到指定页面
 	    			layer.msg(rs.msg);
-	    			location.href="../../../SysAdmin/index";
+	    			location.href="../../../HiMallAdmin/index";
+	    		} else if (rs.code == 501){
+	    			layer.msg(rs.msg);
+	    		} else {
+	    			layer.msg(rs.msg);
 	    		}
 	    	});
 	    	return false ;
 	    })
-
+	    
+	    //验证码
+	    $("#yzm_img").on("click",function(){
+	    	$("#yzm_img").attr("src","../../../imgCode/getVerifiCode?t=" + $.now());
+	    })
+	    
+	    
 	    //表单输入效果
 	    $(".loginBody .input-item").click(function(e){
 	        e.stopPropagation();

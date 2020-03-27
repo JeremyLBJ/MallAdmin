@@ -6,12 +6,15 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lhd.sys.common.Constast;
 import com.lhd.sys.common.DataGridView;
 import com.lhd.sys.common.ResultObject;
+import com.lhd.sys.common.WebUntils;
+import com.lhd.sys.entity.SysDept;
 import com.lhd.sys.entity.SysRole;
 import com.lhd.sys.entity.SysUser;
 import com.lhd.sys.service.SysUserService;
@@ -35,6 +38,33 @@ public class SysUserController {
 	@RequestMapping("/userManager")
 	public String userManager () {
 		return "sysUser/SysUserInfo" ;
+	}
+	
+	/**
+	 * 用户中心
+	 */
+	@RequestMapping("/sysUserCenter")
+	public String sysUserCenter ( Model model ) {
+		//根据当前用户 获取用户相关信息
+		SysUser user = (SysUser) WebUntils.getSession().getAttribute("user") ;
+		model.addAttribute("name", user.getName()) ; //用户名
+		model.addAttribute("remark", user.getAddress()) ;  // 系统角色 
+		model.addAttribute("address", user.getRemark()) ;      // 用户组
+		//根据用户部门ID 查询所在部门
+		SysDept sysDept = this.sysUserService.queryDeptByDeptId(user.getDeptid()) ;
+		model.addAttribute("deptTitle", sysDept.getTitle()) ;
+		//上级领导
+		if ( 0 == user.getMgr() ) {
+			model.addAttribute("mgr", "最高领导") ;
+		} else {
+			SysUser mgr = this.sysUserService.findByMgr(user.getMgr()) ;
+			model.addAttribute("mgr", mgr.getName()) ;
+		}
+		model.addAttribute("sex", user.getSex()) ; //性别
+		model.addAttribute("phone", user.getImgpath()) ; // 手机号码
+		model.addAttribute("hiredate", user.getHiredate()) ; //入职时间
+		model.addAttribute("email", user.getLoginname()) ; //邮箱
+		return "user/userInfo.html" ;
 	}
 	
 	

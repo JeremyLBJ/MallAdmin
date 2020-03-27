@@ -57,6 +57,14 @@
     from sys_user
     where name = #{name} AND pwd = #{pwd}
   </select>
+  
+  <select id="findByMgr" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where id = #{mgr}
+  </select>
 	
 	<update id="removeSysUser" parameterType="java.lang.Integer">
 		 update sys_user

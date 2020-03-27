@@ -26,10 +26,10 @@
   				and sli.content LIKE concat('%',#{content},'%')
   			</if>
   			<if test="startTime != null and endTime == null">
-  				and sli.leavetime &gt;= ( #{startTime} )
+  				and sli.leavetime &gt; ( #{startTime} )
   			</if>
   			<if test="startTime == null and endTime != null">
-  				and sli.leavetime &lt;= ( #{endTime} )
+  				and sli.leavetime &lt; ( #{endTime} )
   			</if>
   			<if test="startTime != null and endTime != null">
   				and sli.leavetime BETWEEN #{startTime} and #{endTime}

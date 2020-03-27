@@ -211,22 +211,21 @@
 				,cols:[
 					[
 				         {field: 'id', title: 'ID',align:'center',width:'50'}
-				         ,{field: 'name', title: '用户名称',align:'center',width:'100'}
+				         ,{field: 'name', title: '用户名称',align:'center',width:'150'}
 				         ,{field: 'remark', title: '用户备注',align:'center',width:'150'}
-				         ,{field: 'leadername', title: '上级领导',align:'center',width:'149',templet: function(d){
+				         ,{field: 'leadername', title: '上级领导',align:'center',width:'200',templet: function(d){
 				        		return d.leadername == null ?  '<font color=blue>超级管理员</font>' : '<font color=black>'+d.leadername+'</font>';
 				         	}
 				         }
-				         ,{field: 'deptname', title: '部门名称',align:'center',width:'170',templet: function(d){
+				         ,{field: 'deptname', title: '部门名称',align:'center',width:'200',templet: function(d){
 				        		return d.deptname == null ?  '<font color=blue>无部门</font>' : '<font color=black>'+d.deptname+'</font>';
 				         	}
 				         }
-				         ,{field: 'available', title: '是否可用',align:'center',width:'100',templet: function(d){
+				         ,{field: 'available', title: '是否可用',align:'center',width:'120',templet: function(d){
 				        		return d.available == 1 ?  '<font color=blue>可用</font>' : '<font color=red>不可用</font>';
 				         	}
 				         }
-				         ,{field: 'imgpath', title: '图片',align:'center',width:'170'}
-				         ,{field: 'hiredate', title: '入职时间',align:'center',width:'170'}
+				         ,{field: 'hiredate', title: '入职时间',align:'center',width:'200'}
 				         ,{fixed: 'right', title: '操作', toolbar: '#noticeRowBar',align:'center',width:'390'}
 					]
 				]
