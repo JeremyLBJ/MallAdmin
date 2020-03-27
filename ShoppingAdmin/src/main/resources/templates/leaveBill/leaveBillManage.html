@@ -93,7 +93,7 @@
 				<label class="layui-form-label">请假时间</label>
 				<div class="layui-input-inline">
 					<input type="hidden" name="id" id="id">
-					<input type="text" name="leavetime" id="leaveTime" readonly="readonly" placeholder="请选择开始时间" class="layui-input">
+					<input type="text" name="leaveTime" id="leaveTime" readonly="readonly" placeholder="请选择开始时间" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -169,7 +169,7 @@
 		laydate.render({
 			elem:'#leaveTime',
 			type:'datetime',
-			format: 'yyyy-MM-dd HH:mm'
+			format: 'yyyy-MM-dd HH:mm:ss'
 		});
 		
 		//加载数据

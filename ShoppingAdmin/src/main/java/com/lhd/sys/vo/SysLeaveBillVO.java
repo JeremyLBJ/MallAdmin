@@ -24,6 +24,9 @@ public class SysLeaveBillVO extends SysLeavebill implements Serializable{
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date endTime ;
 	
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private Date leaveTime ;
+	
 	public Integer getPage() {
 		return page;
 	}
@@ -55,12 +58,20 @@ public class SysLeaveBillVO extends SysLeavebill implements Serializable{
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
+	
+
+	public Date getLeaveTime() {
+		return leaveTime;
+	}
+
+	public void setLeaveTime(Date leaveTime) {
+		this.leaveTime = leaveTime;
+	}
 
 	@Override
 	public String toString() {
 		return "SysLeaveBillVO [page=" + page + ", limit=" + limit + ", startTime=" + startTime + ", endTime=" + endTime
-				+ "]";
+				+ ", leaveTime=" + leaveTime + "]";
 	}
-	
-	
+
 }

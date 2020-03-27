@@ -1,6 +1,5 @@
 package com.lhd.sys.service.Impl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +36,8 @@ public class SysLeaveBillServiceImpl implements SysLeaveBillService {
 	@Transactional
 	public void addLeaveBill(SysLeaveBillVO vo) {
 		SysUser user = (SysUser) WebUntils.getSession().getAttribute("user") ;
-		vo.setLeavetime(new Date()) ;
 		vo.setUserid(user.getId()) ;
+		vo.setLeavetime(vo.getLeaveTime()) ;
 		this.sysLeaveBill.insert(vo) ;
 		
 	}

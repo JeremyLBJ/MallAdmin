@@ -28,7 +28,7 @@ public class TaskAssigneeListener implements TaskListener {
 		SysUserService userService = context.getBean(SysUserService.class) ;
 		SysUser byMgr = userService.findByMgr(mgr) ;
 		//设置办理人
-		delegateTask.setAssignee(delegateTask.getId()) ;
+		delegateTask.setAssignee(byMgr.getName()) ;
 		
 	}
 
