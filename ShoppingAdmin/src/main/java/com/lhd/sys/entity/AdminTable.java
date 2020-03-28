@@ -1,11 +1,9 @@
 package com.lhd.sys.entity;
 
-import com.baomidou.mybatisplus.annotations.TableField;
 
 public class AdminTable {
 	
 	
-	@TableField(exist=false)
 	private Integer code ;
 	
     public Integer getCode() {

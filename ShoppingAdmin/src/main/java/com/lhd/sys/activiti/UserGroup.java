@@ -1,4 +1,4 @@
-package com.lhd.sys.activiti;
+/*package com.lhd.sys.activiti;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -28,9 +28,9 @@ public class UserGroup {
 	
 	private ProcessEngineConfiguration configuration = ActivitiConfig.activitiConfigStatic() ;
 	
-	/**
+	*//**
 	 * 部署任务
-	 */
+	 *//*
 	@Test
 	public void Process () {
 		InputStream inputStream = configuration.getClass().getResourceAsStream("/UserGroup.zip") ;
@@ -54,10 +54,10 @@ public class UserGroup {
 			.deploy() ;
 	}
 	
-	/**
+	*//**
 	 * 启动任务
 	 * 
-	 */
+	 *//*
 	@Test
 	public void startTask () {
 		RuntimeService runtimeService = this.configuration.getRuntimeService() ;
@@ -67,10 +67,10 @@ public class UserGroup {
 	}
 	
 	
-	/**
+	*//**
 	 * 查看组任务
 	 * 
-	 */
+	 *//*
 	@Test
 	public void group () {
 		TaskService taskService = this.configuration.getTaskService() ;
@@ -87,9 +87,9 @@ public class UserGroup {
 		}
 	}
 	
-	/**
+	*//**
 	 * 查询个人任务
-	 */
+	 *//*
 	@Test
 	public void userTask () {
 		TaskService taskService = this.configuration.getTaskService() ;
@@ -107,10 +107,10 @@ public class UserGroup {
 		}
 	}
 	
-	/**
+	*//**
 	 * 
 	 * 指定任务办理人
-	 */
+	 *//*
 	@Test
 	public void assiger () {
 		TaskService taskService = this.configuration.getTaskService() ;
@@ -119,9 +119,9 @@ public class UserGroup {
 		taskService.claim(taskId, userId ) ;
 	}
 	
-	/**
+	*//**
 	 * 撤销任务办理人
-	 */
+	 *//*
 	@Test
 	public void taskRollerback () {
 		TaskService taskService = this.configuration.getTaskService() ;
@@ -129,10 +129,10 @@ public class UserGroup {
 		taskService.claim(taskId, null) ;
 	}
 	
-	/**
+	*//**
 	 * 查询组任务成员列表
 	 * 
-	 */
+	 *//*
 	@Test
 	public void groupList () {
 		String taskId = "220005" ;
@@ -151,11 +151,11 @@ public class UserGroup {
 	}
 	
 	
-	/**
+	*//**
 	 * 
 	 * ${usernames} 部署流程
 	 * 
-	 */
+	 *//*
 	@Test
 	public void ProcessGroup () {
 		InputStream inputStream = configuration.getClass().getResourceAsStream("/UserGroup.zip") ;
@@ -169,9 +169,9 @@ public class UserGroup {
 		System.out.println(deploy.getId());
 	}
 	
-	/**
+	*//**
 	 * 使用流程变量启动任务
-	 */
+	 *//*
 	@Test
 	public void startTasks () {
 		RuntimeService runtimeService = this.configuration.getRuntimeService() ;
@@ -183,3 +183,4 @@ public class UserGroup {
 	}
 
 }
+*/

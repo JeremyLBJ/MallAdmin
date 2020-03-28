@@ -2,8 +2,6 @@ package com.lhd.sys.API.apiEntity;
 
 import java.io.Serializable;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-
 import io.swagger.annotations.ApiModelProperty;
 
 public class GoodsEntity implements Serializable{
@@ -26,12 +24,10 @@ public class GoodsEntity implements Serializable{
 	
 	  //第一个价格
 	  @ApiModelProperty(value="最低价格" ,name="priceOne")
-	  @TableField(exist=false)
 	  private Double priceOne ;
 	    
 	  //第二个价格
 	  @ApiModelProperty(value="最高价格" ,name="priceTow")
-	  @TableField(exist=false)
 	  private Double priceTow ; 
 	  
 	  @ApiModelProperty(value="链接商品图片" ,name="cid")

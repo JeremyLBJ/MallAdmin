@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.swagger.annotations.ApiModelProperty;
@@ -24,17 +23,14 @@ public class ClassificationofGoodsItem implements Serializable{
 	 private Integer showstatus;
 	 
 	 //是否为秒杀商品
-	 @TableField(exist=false)
 	 private Integer miaoShop ;
 	
 	//第一个价格
 	 @ApiModelProperty(value="为价格筛选",name="priceOne")
-	@TableField(exist=false)
 	private Double priceOne ;
 	 
 	//第二个价格
 	 @ApiModelProperty(value="为价格筛选",name="priceTow")
-	@TableField(exist=false)
 	private Double priceTow ; 
 	
 	 @ApiModelProperty(value="发布时间",name="createtime")

@@ -2,7 +2,6 @@ package com.lhd.sys.Config;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngineConfiguration;
-import org.junit.Test;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -23,7 +22,7 @@ public class ActivitiConfig {
 	}
 	
 	
-	@Test
+	/*@Test
 	public  void initTables () {
 		//创建流程引擎配置
 		ProcessEngineConfiguration configuration = ProcessEngineConfiguration
@@ -36,7 +35,7 @@ public class ActivitiConfig {
 		
 		//得到流程引擎
 		ProcessEngine engine = configuration.buildProcessEngine() ;
-	}
+	}*/
 	
 
 }

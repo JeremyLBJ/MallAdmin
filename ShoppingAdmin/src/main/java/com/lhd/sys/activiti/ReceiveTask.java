@@ -1,10 +1,10 @@
-package com.lhd.sys.activiti;
-/**
+/*package com.lhd.sys.activiti;
+*//**
  * 接收任务
  * 
  * @author ASUS
  *
- */
+ *//*
 
 import java.io.InputStream;
 import java.util.zip.ZipInputStream;
@@ -23,10 +23,10 @@ public class ReceiveTask {
 	
 	private ProcessEngineConfiguration configuration = ActivitiConfig.activitiConfigStatic() ;
 	
-	/**
+	*//**
 	 * 流程部署
 	 * 
-	 */
+	 *//*
 	@Test
 	public void Process () {
 		InputStream inputStream = configuration.getClass().getResourceAsStream("/MyProcess.zip") ;
@@ -41,10 +41,10 @@ public class ReceiveTask {
 		
 	}
 	
-	/**
+	*//**
 	 * 启动流程实例
 	 * 
-	 */
+	 *//*
 	@Test
 	public void startProcess () {
 		RuntimeService runtimeService = this.configuration.getRuntimeService() ;
@@ -67,25 +67,26 @@ public class ReceiveTask {
 		System.out.println(singleResult.getActivityId()) ;
 		System.out.println(singleResult.getId()) ;
 		int  value = 10000 ;
-		/** 使用流程变量设置当日销售额，用来传递业务参数 */
+		*//** 使用流程变量设置当日销售额，用来传递业务参数 *//*
 		runtimeService.setVariable(singleResult.getId(), "当前的销售额", value) ;
-		/** 向后执行一步，如果流程处于等待状态，使得流程继续执行 */
+		*//** 向后执行一步，如果流程处于等待状态，使得流程继续执行 *//*
 		runtimeService.trigger(singleResult.getId()) ;
 	}
 	
-	/**
+	*//**
 	 * 发送短信
 	 * 
-	 */
+	 *//*
 	@Test
 	public void sendMessage () {
 		RuntimeService runtimeService = this.configuration.getRuntimeService() ;
 		String executionId = "197502" ;
 		String variableName = "当前的销售额" ;
 		int variable = (int) runtimeService.getVariable(executionId, variableName) ;
-		/** 向后执行一步，如果流程处于等待状态，使得流程继续执行 */
+		*//** 向后执行一步，如果流程处于等待状态，使得流程继续执行 *//*
 		runtimeService.trigger(executionId) ;
 		System.out.println(variable);
 	}
 
 }
+*/

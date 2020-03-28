@@ -1,4 +1,4 @@
-package com.lhd.sys.activiti;
+/*package com.lhd.sys.activiti;
 
 import java.io.InputStream;
 import java.util.zip.ZipInputStream;
@@ -28,9 +28,9 @@ public class ProcdefTest {
 	
 	
 	
-	/**
+	*//**
 	 * 部署流程
-	 */
+	 *//*
 	@Test
 	public void processTest () {
 		InputStream resourceAsStream = this.processEngineConfiguration.getClass().getResourceAsStream("/UserGroup.zip") ;
@@ -58,3 +58,4 @@ public class ProcdefTest {
 	}
 
 }
+*/

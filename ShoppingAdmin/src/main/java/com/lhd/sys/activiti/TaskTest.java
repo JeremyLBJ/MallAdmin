@@ -1,4 +1,4 @@
-package com.lhd.sys.activiti;
+/*package com.lhd.sys.activiti;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -20,11 +20,11 @@ public class TaskTest {
 	
 	private ProcessEngineConfiguration configuration = ActivitiConfig.activitiConfigStatic() ;
 	
-	/**
+	*//**
 	 * 
 	 * 启动流程
 	 * 
-	 */
+	 *//*
 	@Test
 	public void startProcess () {
 		RuntimeService runtimeService = configuration.getRuntimeService() ;
@@ -38,11 +38,11 @@ public class TaskTest {
 		System.out.println("流程启动成功");
 	}
 	
-	/**
+	*//**
 	 * 
 	 * 查询我的个人任务
 	 * 
-	 */
+	 *//*
 	@Test
 	public void findMyTask () {
 		TaskService taskService = configuration.getTaskService() ;
@@ -67,11 +67,11 @@ public class TaskTest {
 		}
 	}
 	
-	/**
+	*//**
 	 * 办理任务
 	 * 52505
 	 * 
-	 */
+	 *//*
 	@Test
 	public void Process () {
 		TaskService taskService = configuration.getTaskService() ;
@@ -82,11 +82,11 @@ public class TaskTest {
 	
 	
 	
-	/**
+	*//**
 	 * 办理任务 并指定流程变量指定流程走向
 	 * 52505
 	 * 
-	 */
+	 *//*
 	@Test
 	public void ProcessVar () {
 		TaskService taskService = configuration.getTaskService() ;
@@ -97,10 +97,10 @@ public class TaskTest {
 		System.out.println("任务办理成功");
 	}
 	
-	/**
+	*//**
 	 * 查询当前任务办理状态
 	 * 
-	 */
+	 *//*
 	@Test
 	public void findProcessStutes () {
 		//已知流程ID
@@ -114,7 +114,7 @@ public class TaskTest {
 		}
 		
 		//任务ID
-		/*TaskService taskService = configuration.getTaskService() ;
+		TaskService taskService = configuration.getTaskService() ;
 		String taskId = "75005" ;
 		Task result = taskService.createTaskQuery().taskId(taskId ).singleResult() ;
 		RuntimeService service = configuration.getRuntimeService() ;
@@ -123,13 +123,13 @@ public class TaskTest {
 			System.out.println("任务正在办理");
 		} else {
 			System.out.println("任务已经结束");
-		}*/
+		}
 		
 	}
 	
-	/**
+	*//**
 	 * 设置流程变量
-	 */
+	 *//*
 	@Test
 	public void setProcess () {
 		RuntimeService runtimeService = configuration.getRuntimeService() ;
@@ -142,9 +142,9 @@ public class TaskTest {
 		System.out.println("设置成功");
 	}
 	
-	/**
+	*//**
 	 * 获取流程变量
-	 */
+	 *//*
 	@Test
 	public void getProcess () {
 		RuntimeService runtimeService = configuration.getRuntimeService() ;
@@ -154,9 +154,9 @@ public class TaskTest {
 		System.out.println(variable);
 	}
 	
-	/**
+	*//**
 	 * 查看历史流程变量
-	 */
+	 *//*
 	@Test
 	public void hiProcess () {
 		HistoryService historyService = configuration.getHistoryService() ;
@@ -173,3 +173,4 @@ public class TaskTest {
 		}
 	}
 }
+*/

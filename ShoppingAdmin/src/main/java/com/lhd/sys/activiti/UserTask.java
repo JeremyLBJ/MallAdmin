@@ -1,4 +1,4 @@
-package com.lhd.sys.activiti;
+/*package com.lhd.sys.activiti;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -17,20 +17,20 @@ import org.junit.Test;
 
 import com.lhd.sys.Config.ActivitiConfig;
 
-/**
+*//**
  * 用户任务  设置流程变量
  * 
  * @author ASUS
  *
- */
+ *//*
 public class UserTask {
 	
 	private ProcessEngineConfiguration configuration = ActivitiConfig.activitiConfigStatic() ;
 	
-	/**
+	*//**
 	 * 部署任务
 	 * 
-	 */
+	 *//*
 	@Test
 	public void Process () {
 		InputStream inputStream = configuration.getClass().getResourceAsStream("/activiti.zip") ;
@@ -44,10 +44,10 @@ public class UserTask {
 		System.out.println(deploy);
 	}
 	
-	/**
+	*//**
 	 * 启动任务
 	 * 
-	 */
+	 *//*
 	@Test
 	public void startTask () {
 		RuntimeService runtimeService = this.configuration.getRuntimeService() ;
@@ -62,10 +62,10 @@ public class UserTask {
 	
 	
 	
-	/**
+	*//**
 	 *查看任务 
 	 * 
-	 */
+	 *//*
 	@Test
 	public void findTask () {
 		TaskService taskService = configuration.getTaskService() ;
@@ -86,10 +86,10 @@ public class UserTask {
 	
 	
 	
-	/**
+	*//**
 	 * 办理任务
 	 * 
-	 */
+	 *//*
 	@Test
 	public void task () {
 		TaskService taskService = this.configuration.getTaskService() ;
@@ -101,3 +101,4 @@ public class UserTask {
 	}
 
 }
+*/

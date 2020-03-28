@@ -1,4 +1,4 @@
-package com.lhd.sys.activiti;
+/*package com.lhd.sys.activiti;
 
 import java.util.List;
 
@@ -11,13 +11,13 @@ import org.junit.Test;
 
 import com.lhd.sys.Config.ActivitiConfig;
 
-/**
+*//**
  * 
  * 查看历史
  * 
  * @author ASUS
  *
- */
+ *//*
 public class HistoryProcess {
 	
 	private ProcessEngineConfiguration configuration = ActivitiConfig.activitiConfigStatic() ;
@@ -43,10 +43,10 @@ public class HistoryProcess {
 	}
 	
 	
-	/**
+	*//**
 	 * 查看历史活动
 	 * 
-	 */
+	 *//*
 	@Test
 	public void allHistoryProcess () {
 		HistoryService historyService = configuration.getHistoryService() ;
@@ -66,10 +66,10 @@ public class HistoryProcess {
 		}
 	}
 	
-	/**
+	*//**
 	 * 
 	 * 查看历史任务
-	 */
+	 *//*
 	@Test
 	public void findTask () {
 		HistoryService historyService = configuration.getHistoryService() ;
@@ -87,9 +87,9 @@ public class HistoryProcess {
 		}
 	}
 	
-	/**
+	*//**
 	 * 查看历史流程变量
-	 */
+	 *//*
 	@Test
 	public void historyVarinst () {
 		HistoryService historyService = configuration.getHistoryService() ;
@@ -107,3 +107,4 @@ public class HistoryProcess {
 	}
 
 }
+*/

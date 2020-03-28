@@ -41,7 +41,7 @@ public class SuserController {
 	
 	@RequestMapping("/toLogin")
 	public String toLogin () {
-		return "/login/login.html" ;
+		return "login/login.html" ;
 	}
 	
 	@RequestMapping("/loginfoMessage")

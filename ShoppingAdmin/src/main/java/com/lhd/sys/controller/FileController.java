@@ -52,6 +52,8 @@ public class FileController {
 		try {
 			file.transferTo(files);
 			String path = files.getAbsolutePath() ;
+			System.out.println(fileName);
+			System.out.println(dirFile);
 			if ( null == id ) {
 				 cid = this.goodsService.findMaxId() + 1 ;
 			} else {

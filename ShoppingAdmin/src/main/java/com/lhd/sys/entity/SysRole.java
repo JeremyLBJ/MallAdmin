@@ -2,7 +2,6 @@ package com.lhd.sys.entity;
 
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -55,7 +54,6 @@ public class SysRole {
     
     
     
-    @TableField(exist=false)
     private Boolean LAY_CHECKED ;
     
     

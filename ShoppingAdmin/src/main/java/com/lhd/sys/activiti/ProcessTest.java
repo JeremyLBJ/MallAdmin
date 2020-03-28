@@ -1,4 +1,4 @@
-package com.lhd.sys.activiti;
+/*package com.lhd.sys.activiti;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -19,22 +19,22 @@ import org.junit.Test;
 
 import com.lhd.sys.Config.ActivitiConfig;
 
-/**
+*//**
  * 
  * 流程
  * @author ASUS
  *
- */
+ *//*
 public class ProcessTest {
 	
 	
 	private ProcessEngineConfiguration configuration = ActivitiConfig.activitiConfigStatic() ;
 	
 	
-	/**
+	*//**
 	 * 使用zip部署流程
 	 * 
-	 */
+	 *//*
 	@Test
 	public void deployProcess () {
 		InputStream inputStream = configuration.getClass().getResourceAsStream("/activitiBpmn.zip") ;
@@ -48,11 +48,11 @@ public class ProcessTest {
 		System.out.println(deploy);
 	}
 	
-	/**
+	*//**
 	 * 
 	 * 查询流程部署信息  act_re_deployment
 	 * 
-	 */
+	 *//*
 	@Test
 	public void deployment () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
@@ -65,11 +65,11 @@ public class ProcessTest {
 		System.out.println(singleResult);
 	}
 	
-	/**
+	*//**
 	 * 流程定义  act_re_procdef表
 	 * 
 	 * 
-	 */
+	 *//*
 	@Test
 	public void process () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
@@ -90,11 +90,11 @@ public class ProcessTest {
 		}
 	}
 	
-	/**
+	*//**
 	 * 
 	 * 启动流程
 	 * 
-	 */
+	 *//*
 	@Test
 	public void startProcess () {
 		RuntimeService runtimeService = configuration.getRuntimeService() ;
@@ -103,10 +103,10 @@ public class ProcessTest {
 		System.out.println("流程启动成功");
 	}
 	
-	/**
+	*//**
 	 * 删除流程定义
 	 * 
-	 */
+	 *//*
 	@Test
 	public void deleteProcess () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
@@ -117,11 +117,11 @@ public class ProcessTest {
 	}
 	
 	
-	/**
+	*//**
 	 * 查询流程图 根据流程定义ID 并写入d盘
 	 * 
 	 * 
-	 */
+	 *//*
 	@Test
 	public void findProcessImg () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
@@ -146,11 +146,11 @@ public class ProcessTest {
 	}
 	
 	
-	/**
+	*//**
 	 * 
 	 * 查询当前最新版本号
 	 * 
-	 */
+	 *//*
 	@Test
 	public void findNewProcess () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
@@ -176,11 +176,11 @@ public class ProcessTest {
 		}
 	}
 	
-	/**
+	*//**
 	 * 
 	 * 根据流程名删除流程
 	 *  
-	 */
+	 *//*
 	@Test
 	public void deleteAllSameName () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
@@ -196,3 +196,4 @@ public class ProcessTest {
 	}
 
 }
+*/

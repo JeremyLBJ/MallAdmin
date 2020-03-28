@@ -1,4 +1,4 @@
-package com.lhd.sys.activiti;
+/*package com.lhd.sys.activiti;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -20,23 +20,23 @@ import org.junit.Test;
 
 import com.lhd.sys.Config.ActivitiConfig;
 
-/**
+*//**
  * 
  * 
  * 流程操作测试
  * @author ASUS
  *
- */
+ *//*
 public class Process {
 	
 	
 	private ProcessEngineConfiguration configuration = ActivitiConfig.activitiConfigStatic() ;
 	
 	
-	/**
+	*//**
 	 * 使用zip部署流程
 	 * 
-	 */
+	 *//*
 	@Test
 	public void ProcessZip () {
 		InputStream resourceAsStream = configuration.getClass().getResourceAsStream("/payMent.zip") ;
@@ -50,11 +50,11 @@ public class Process {
 	
 	
 	
-	/**
+	*//**
 	 * 
 	 * 查询流程部署信息  act_re_deployment
 	 * 
-	 */
+	 *//*
 	@Test
 	public void findAllDeployment () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
@@ -65,11 +65,11 @@ public class Process {
 	
 	
 	
-	/**
+	*//**
 	 * 流程定义  act_re_procdef表
 	 * 
 	 * 
-	 */
+	 *//*
 	@Test
 	public void Procdef () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
@@ -89,11 +89,11 @@ public class Process {
 	
 	
 	
-	/**
+	*//**
 	 * 
 	 * 启动流程
 	 * 
-	 */
+	 *//*
 	@Test
 	public void startProcess () {
 		RuntimeService runtimeService = configuration.getRuntimeService() ;
@@ -104,10 +104,10 @@ public class Process {
 	
 	
 
-	/**
+	*//**
 	 * 删除流程定义
 	 * 
-	 */
+	 *//*
 	@Test
 	public void deleteProcess () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
@@ -117,11 +117,11 @@ public class Process {
 	}
 	
 
-	/**
+	*//**
 	 * 查询流程图 根据流程定义ID 并写入d盘
 	 * 
 	 * 
-	 */
+	 *//*
 	@Test
 	public void finaBpmn () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
@@ -147,11 +147,11 @@ public class Process {
 	}
 	
 	
-	/**
+	*//**
 	 * 
 	 * 查询当前最新版本号
 	 * 
-	 */
+	 *//*
 	@Test
 	public void findNewVesion () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
@@ -178,11 +178,11 @@ public class Process {
 	
 	
 	
-	/**
+	*//**
 	 * 
 	 * 根据流程名删除流程
 	 *  
-	 */
+	 *//*
 	@Test
 	public void deleteByName () {
 		RepositoryService repositoryService = configuration.getRepositoryService() ;
@@ -197,11 +197,11 @@ public class Process {
 		}
 	}
 	
-	/**
+	*//**
 	 * 
 	 * 查询运行流程  act_ru_execution 
 	 * 
-	 */
+	 *//*
 	@Test
 	public void processExecetion () {
 		RuntimeService runtimeService = this.configuration.getRuntimeService() ;
@@ -220,3 +220,4 @@ public class Process {
 	}
 
 }
+*/

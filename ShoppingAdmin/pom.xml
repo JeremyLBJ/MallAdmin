@@ -13,8 +13,9 @@ xsi:schemaLocation=
 	
 	<properties>
 		<java.version>1.8</java.version>
+		<start-class>com.lhd.ShoppingAdminAppliction</start-class>
 		<!--jar包 pom文件不报错 -->
-		<maven-jar-plugin.version>2.6</maven-jar-plugin.version>
+		<!-- <maven-jar-plugin.version>2.6</maven-jar-plugin.version> -->
 	</properties>
   
   
@@ -73,17 +74,12 @@ xsi:schemaLocation=
 		    <artifactId>shiro-spring</artifactId>
 		    <version>1.4.0</version>
 		</dependency>
-
+<!-- 
 		 <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
             <version>2.3</version>
-        </dependency>
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatisplus-spring-boot-starter</artifactId>
-			<version>1.0.5</version>
-		</dependency>
+        </dependency> -->
 		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -257,39 +253,69 @@ xsi:schemaLocation=
 	</dependencies>
   
   	<build>
+  		<finalName>HiMAallShop</finalName>
 		<plugins>
-			<plugin>
+		
+		<plugin>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-maven-plugin</artifactId>
+         <version>2.0.1.RELEASE</version>
+         <configuration>
+            <mainClass>${start-class}</mainClass>
+         </configuration>
+         <executions>
+            <execution>
+               <goals>
+                  <goal>repackage</goal>
+               </goals>
+            </execution>
+         </executions>
+      </plugin>
+
+			  <plugin>
             <groupId>org.springframework.boot</groupId>
-            <!--springboot-maven不能使用1.5.9.RELEASE版本, 否则会导致WEB-INF下的jsp资源无法访问-->
             <artifactId>spring-boot-maven-plugin</artifactId>
-            <version>1.4.2.RELEASE</version>
-            <configuration><!--指定springboot的main方法类，否则会由于某些测试类中也有main方法而导致构建失败-->
-                <mainClass>com.lhd.ShoppingAdminApplication</mainClass>
+              <version>1.4.2.RELEASE</version>
+            <configuration>
+                <mainClass>${start-class}</mainClass>
             </configuration>
             <executions>
                 <execution> <goals> <goal>repackage</goal> </goals> </execution>
             </executions>
-        </plugin>
+        </plugin>   
+        
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <verbose>true</verbose>
+                <fork>true</fork>
+                <encoding>UTF-8</encoding>
+                 <source>1.8</source>
+                 <target>1.8</target>
+            </configuration>
+        </plugin> 
+                
 		</plugins>
-		  <resources> 
+		   <resources> 
             <resource>
-               <!--  JSP包打包到资源里 -->
-                <directory>src/main/webapp</directory>
-                <targetPath>META-INF/resources</targetPath>
+                <directory>src/main/java</directory>
                 <includes>
-                    <include>**/**</include>
-                </includes>
-            </resource>
-              <resource>
-                <!-- 其他资打包到资源里 -->
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/**</include>
+                <include>**/*.properties</include>
+                    <include>**/*.xml</include>
                 </includes>
                 <filtering>false</filtering>
-            </resource>  
-        </resources>  
-		
+            </resource>
+              <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>   
+        </resources>   
 	</build>
 	
 	<packaging>jar</packaging>

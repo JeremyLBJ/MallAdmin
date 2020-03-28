@@ -10,7 +10,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 @EnableAutoConfiguration
-@MapperScan("com.lhd.sys.dao")
+@MapperScan(basePackages= {"com.lhd.sys.dao"})
 public class ShoppingAdminAppliction extends SpringBootServletInitializer{
 
 	

@@ -7,7 +7,8 @@ spring:
     password: a
   activiti:
     check-process-definitions: false
-    history-level: full   
+    history-level: full 
+    
     
   http:
     multipart:
@@ -26,6 +27,8 @@ spring:
     username: 1447076355@qq.com # 这里填写个人的qq邮箱
     password: aghmefjkwysdihfg # 注：这里不是qq邮箱的密码，而是授权码
     default-encoding: UTF-8
+    
+   
 #发送地址
 mail:
  fromMail:

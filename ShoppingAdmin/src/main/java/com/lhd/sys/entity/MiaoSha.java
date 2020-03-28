@@ -2,17 +2,14 @@ package com.lhd.sys.entity;
 
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class MiaoSha {
 	
 	
 	
-	@TableField
 	private Double priceOne ;
 	
-	@TableField
 	private Double priceTow ;
 	
     /**

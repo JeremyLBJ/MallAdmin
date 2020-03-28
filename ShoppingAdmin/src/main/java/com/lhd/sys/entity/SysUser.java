@@ -2,7 +2,6 @@ package com.lhd.sys.entity;
 
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class SysUser {
@@ -142,7 +141,6 @@ public class SysUser {
      * 
      * @return
      */
-    @TableField(exist=false)
     private String leadername ;
     
     
@@ -151,7 +149,6 @@ public class SysUser {
      * 
      * @return
      */
-    @TableField(exist=false)
     private String deptname ;
     
     

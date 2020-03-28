@@ -5,7 +5,6 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.lhd.sys.entity.SysLog;
 
 public class SysLogVO extends SysLog implements Serializable{
@@ -21,11 +20,9 @@ public class SysLogVO extends SysLog implements Serializable{
 	
 	private Integer [] ids ;
 	
-	@TableField(exist=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date startTime ;
 	
-	@TableField(exist=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date endTime ;
 

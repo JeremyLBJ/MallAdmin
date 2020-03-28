@@ -1,4 +1,4 @@
-package com.lhd.sys.activiti;
+/*package com.lhd.sys.activiti;
 
 import java.util.List;
 
@@ -10,11 +10,11 @@ import org.junit.Test;
 
 import com.lhd.sys.Config.ActivitiConfig;
 
-/**
+*//**
  * 启动流程
  * @author ASUS
  *
- */
+ *//*
 public class StartProcess {
 	
 	private ProcessEngineConfiguration configuration = ActivitiConfig.activitiConfigStatic() ;
@@ -53,3 +53,4 @@ public class StartProcess {
 	}
 
 }
+*/

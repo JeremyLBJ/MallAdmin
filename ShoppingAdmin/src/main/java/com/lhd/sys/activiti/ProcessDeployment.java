@@ -1,4 +1,4 @@
-package com.lhd.sys.activiti;
+/*package com.lhd.sys.activiti;
 
 import java.io.InputStream;
 import java.util.zip.ZipInputStream;
@@ -9,12 +9,12 @@ import org.activiti.engine.repository.Deployment;
 import org.junit.Test;
 
 import com.lhd.sys.Config.ActivitiConfig;
-/**
+*//**
  * 流程部署
  * 
  * @author ASUS
  *
- */
+ *//*
 public class ProcessDeployment {
 	
 	private ProcessEngineConfiguration configuration = ActivitiConfig.activitiConfigStatic() ;
@@ -32,3 +32,4 @@ public class ProcessDeployment {
 	}
 
 }
+*/
