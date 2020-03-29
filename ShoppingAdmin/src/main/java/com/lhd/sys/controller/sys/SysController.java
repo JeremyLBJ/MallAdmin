@@ -87,4 +87,12 @@ public class SysController {
 		return "redirect:/HiMallAdmin/toLogin" ;
 	}
 
+	@RequestMapping("/shiroLoginOut")
+	public String shiroLoginOut () {
+		//1.获取Subject
+		Subject subject = SecurityUtils.getSubject() ;
+		WebUntils.getSession().removeAttribute("user");
+		subject.logout() ;
+		return "redirect:/HiMallAdmin/toLogin" ;
+	}
 }

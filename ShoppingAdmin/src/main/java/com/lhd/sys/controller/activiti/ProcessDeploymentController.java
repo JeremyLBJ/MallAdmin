@@ -84,6 +84,12 @@ public class ProcessDeploymentController {
 	@RequestMapping("/processDeploymentImg")
 	public String processDeploymentImg ( String deploymentId ,Model model  ) {
 		model.addAttribute("deploymentId", deploymentId) ;
+		Map<String, Object> map = new HashMap<>() ;
+		map.put("x", 0) ;
+		map.put("y", 0) ;
+		map.put("width", 0) ;
+		map.put("height", 0) ;
+		model.addAttribute("map", map) ;
 		return "wolkFlow/viewProcessImage.html" ;
 	}
 	

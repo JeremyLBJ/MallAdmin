@@ -73,6 +73,7 @@ public class ShiorConfig {
 		filterChainDefinitionMap.put("/resources/layui/*", "anon") ;
 		filterChainDefinitionMap.put("/resources/page/main.html", "anon") ;
 		filterChainDefinitionMap.put("/resources/css/404.html", "anon") ;
+		filterChainDefinitionMap.put("/resources/favicon.ico", "anon") ;
 		//拦截admin下面所有的方法请求
 		filterChainDefinitionMap.put("/HiMallAdmin/toLogin", "anon") ;
 		filterChainDefinitionMap.put("/HiMallAdmin/toLogin", "anon") ;
