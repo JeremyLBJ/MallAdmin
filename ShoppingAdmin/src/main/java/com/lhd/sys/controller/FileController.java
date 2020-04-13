@@ -51,9 +51,8 @@ public class FileController {
 		Integer cid = 0 ;
 		try {
 			file.transferTo(files);
-			String path = files.getAbsolutePath() ;
-			System.out.println(fileName);
-			System.out.println(dirFile);
+//			String path = files.getAbsolutePath() ;
+			String filePath = dirName+"\\"+fileName ;
 			if ( null == id ) {
 				 cid = this.goodsService.findMaxId() + 1 ;
 			} else {
@@ -68,7 +67,7 @@ public class FileController {
 			
 			try {
 				//写入数据库
-				this.goodsService.uploadImgPath(path, cid );
+				this.goodsService.uploadImgPath(filePath, cid );
 			} catch (Exception e) {
 				throw new RuntimeException("文件存入数据库发送错误") ;
 			}

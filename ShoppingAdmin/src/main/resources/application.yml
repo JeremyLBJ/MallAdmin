@@ -2,7 +2,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/highconcurrency?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&nullCatalogMeansCurrent=true
+    url: jdbc:mysql://localhost:3306/HiMall1?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&nullCatalogMeansCurrent=true
     username: root
     password: a
   activiti:
@@ -15,7 +15,7 @@ spring:
           enabled: true # 默认支持文件上传
 
   #mvc
-  #mvc:
+  #mvc: highconcurrency
     #view:
       #prefix: /WEB-INF/html/
       #suffix: .html

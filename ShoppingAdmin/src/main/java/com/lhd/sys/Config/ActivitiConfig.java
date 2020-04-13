@@ -10,7 +10,7 @@ public class ActivitiConfig {
 	public static ProcessEngineConfiguration activitiConfigStatic () {
 		ProcessEngineConfiguration configuration = ProcessEngineConfiguration
 				.createStandaloneProcessEngineConfiguration() ;
-	configuration.setJdbcUrl("jdbc:mysql://localhost:3306/highconcurrency?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false") ;
+	configuration.setJdbcUrl("jdbc:mysql://localhost:3306/HiMall1?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false") ;
 	configuration.setJdbcDriver("com.mysql.jdbc.Driver") ;
 	configuration.setJdbcUsername("root") ;
 	configuration.setJdbcPassword("a") ;
